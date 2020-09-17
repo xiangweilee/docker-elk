@@ -2,7 +2,7 @@
 
 ELK stack in Docker container
 
-Filebeat + Logstash + Elasticsearch + Kibana in one docker-composer.yml file
+Filebeat + Logstash + Elasticsearch + Kibana in one `docker-compose.yml` file
 
 > Here we use apache.log file as an example
 
