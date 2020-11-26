@@ -1,0 +1,171 @@
+{
+  "query": {
+    "bool": {
+      "must": [
+        {
+          "nested": {
+            "path": "applications",
+            "query": {
+              "bool": {
+                "must": [
+                  {
+                    "match": {
+                      "applications.advertiser_id": {
+                        "query": 32678
+                      }
+                    }
+                  },
+                  {
+                    "match": {
+                      "applications.job_id": {
+                        "query": 7593885
+                      }
+                    }
+                  },
+                  {
+                    "bool": {
+                      "should": [
+                        {
+                          "range": {
+                            "applications.application_status.code": {
+                              "gte": 0,
+                              "lte": 499999
+                            }
+                          }
+                        },
+                        {
+                          "terms": {
+                            "applications.application_status.code": [
+                              "100000"
+                            ]
+                          }
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "function_score": {
+                      "functions": [
+                        {
+                          "field_value_factor": {
+                            "factor": 99999,
+                            "field": "applications.priority_application_flag"
+                          }
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            },
+            "inner_hits": {},
+            "score_mode": "max"
+          }
+        },
+        {
+          "terms": {
+            "personal.nationality.code": [
+              190
+            ]
+          }
+        }
+      ],
+      "should": [
+        {
+          "exists": {
+            "field": "siva_resume_id"
+          }
+        },
+        {
+          "bool": {
+            "should": [
+              {
+                "term": {
+                  "matching.c1_position_level_siva_code": {
+                    "value": 2,
+                    "boost": 5063
+                  }
+                }
+              },
+              {
+                "term": {
+                  "matching.c2_position_level_siva_code": {
+                    "value": 2,
+                    "boost": 4365
+                  }
+                }
+              }
+            ]
+          }
+        },
+        {
+          "bool": {
+            "should": [
+              {
+                "terms": {
+                  "matching.highest_qualification_siva_code": [
+                    2
+                  ],
+                  "boost": 5620
+                }
+              },
+              {
+                "terms": {
+                  "matching.qualification.code": [
+                    2
+                  ],
+                  "boost": 2719
+                }
+              }
+            ]
+          }
+        },
+        {
+          "bool": {
+            "should": [
+              {
+                "terms": {
+                  "matching.c1_specialization_code": [
+                    102
+                  ],
+                  "boost": 12228
+                }
+              },
+              {
+                "terms": {
+                  "matching.c2_specialization_code": [
+                    102
+                  ],
+                  "boost": 3378
+                }
+              }
+            ]
+          }
+        },
+        {
+          "terms": {
+            "preference.preferred_work_locations.code": [
+              50100
+            ],
+            "boost": 6819
+          }
+        },
+        {
+          "range": {
+            "candidate.start_work_date": {
+              "boost": 7559,
+              "gte": "2017-01-03"
+            }
+          }
+        }
+      ]
+    }
+  },
+  "sort": [
+    {
+      "_score": {
+        "order": "desc"
+      }
+    }
+  ]
+}

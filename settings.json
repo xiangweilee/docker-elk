@@ -1,0 +1,57 @@
+{
+    "analysis": {
+      "filter": {
+        "positionSynFilter": {
+          "type": "synonym",
+          "synonyms_path": "synonyms_position_title.txt"
+        },
+        "skillSynFilter": {
+          "type": "synonym",
+          "synonyms_path": "synonyms_skill.txt"
+        }
+      },
+      "analyzer": {
+        "text_skill": {
+          "filter": [
+            "lowercase",
+            "skillSynFilter",
+            "unique",
+            "asciifolding"
+          ],
+          "index": "analyzed",
+          "type": "custom",
+          "tokenizer": "whiteSpaceTokenizer"
+        },
+        "text_general": {
+          "filter": [
+            "lowercase",
+            "asciifolding",
+            "unique",
+            "asciifolding"
+          ],
+          "index": "analyzed",
+          "type": "custom",
+          "tokenizer": "standardTokenizer"
+        },
+        "text_position_title": {
+          "filter": [
+            "lowercase",
+            "positionSynFilter",
+            "unique",
+            "asciifolding"
+          ],
+          "index": "analyzed",
+          "type": "custom",
+          "tokenizer": "whiteSpaceTokenizer"
+        }
+      },
+      "tokenizer": {
+        "standardTokenizer": {
+          "type": "standard"
+        },
+        "whiteSpaceTokenizer": {
+          "type": "whitespace"
+        }
+      }
+    }
+}

@@ -1,20 +1,20 @@
 version: "3.8"
 services:
-  logstash:
-    image: docker.elastic.co/logstash/logstash-oss:7.9.1
-    container_name: logstash
-    hostname: logstash
-    volumes:
-      - ./pipeline/logstash.conf:/usr/share/logstash/pipeline/logstash.conf:ro
-  filebeat:
-    image: docker.elastic.co/beats/filebeat-oss:7.9.1
-    container_name: filebeat
-    hostname: filebeat
-    volumes:
-      - ./config/filebeat.yml:/usr/share/filebeat/filebeat.yml:ro
-      - ./apache.log:/usr/share/filebeat/apache.log:ro
+  # logstash:
+  #   image: docker.elastic.co/logstash/logstash-oss:7.9.3
+  #   container_name: logstash
+  #   hostname: logstash
+  #   volumes:
+  #     - ./pipeline/logstash.conf:/usr/share/logstash/pipeline/logstash.conf:ro
+  # filebeat:
+  #   image: docker.elastic.co/beats/filebeat-oss:7.9.3
+  #   container_name: filebeat
+  #   hostname: filebeat
+  #   volumes:
+  #     - ./config/filebeat.yml:/usr/share/filebeat/filebeat.yml:ro
+  #     - ./apache.log:/usr/share/filebeat/apache.log:ro
   elasticsearch:
-    image: docker.elastic.co/elasticsearch/elasticsearch-oss:7.9.1
+    image: docker.elastic.co/elasticsearch/elasticsearch-oss:7.9.3
     container_name: elasticsearch
     hostname: elasticsearch
     ports:
@@ -22,9 +22,19 @@ services:
       - 9300:9300
     environment:
       - discovery.type=single-node
-  kibana:
-    image: docker.elastic.co/kibana/kibana-oss:7.9.1
-    container_name: kibana
-    hostname: kibana
+    volumes:
+      - ./config/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml:ro
+      - ./config/synonyms_position_title.txt:/usr/share/elasticsearch/config/synonyms_position_title.txt:ro
+      - ./config/synonyms_skill.txt:/usr/share/elasticsearch/config/synonyms_skill.txt:ro
+  mirage:
+    image: appbaseio/mirage
+    container_name: mirage
+    hostname: mirage
     ports:
-      - 5601:5601
+      - 3030:3030
+  # kibana:
+  #   image: docker.elastic.co/kibana/kibana-oss:7.9.3
+  #   container_name: kibana
+  #   hostname: kibana
+  #   ports:
+  #     - 5601:5601
