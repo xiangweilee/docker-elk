@@ -8,33 +8,46 @@ Filebeat + Logstash + Elasticsearch + Kibana in one docker-composer.yml file
 
 # Create the index
 
+<details>
+  <summary>Code</summary>
+
 ```shell
-$ curl --request PUT 'http://localhost:9200/staging_my_resume'
+$ curl --request POST 'https://vpc-application-index-es-stage-hqo6aa6sarqhaxnhg6tgmp6bre.ap-southeast-1.es.amazonaws.com/staging_my_resume'
 {"acknowledged":true,"shards_acknowledged":true,"index":"staging_my_resume"}
 ```
 
+</details>
+
 # Close the index
 
+<details>
+  <summary>Code</summary>
+
 ```shell
-$ curl --request POST 'http://localhost:9200/staging_my_resume/_close'
+$ curl --request POST 'https://vpc-application-index-es-stage-hqo6aa6sarqhaxnhg6tgmp6bre.ap-southeast-1.es.amazonaws.com/staging_my_resume/_close'
 {"acknowledged":true,"shards_acknowledged":true,"indices":{"staging_my_resume":{"closed":true}}}
 ```
 
+</details>
+
 # Update the index settings
 
+<details>
+  <summary>Code</summary>
+
 ```shell
-$curl --request PUT 'http://localhost:9200/staging_my_resume/_settings' \
+$ curl --request PUT 'https://vpc-application-index-es-stage-hqo6aa6sarqhaxnhg6tgmp6bre.ap-southeast-1.es.amazonaws.com/staging_my_resume/_settings' \
 --header 'Content-Type: application/json' \
 --data-raw '{
     "analysis": {
       "filter": {
         "positionSynFilter": {
           "type": "synonym",
-          "synonyms_path": "synonyms_position_title.txt"
+          "synonyms_path": "analyzers/F144516798"
         },
         "skillSynFilter": {
           "type": "synonym",
-          "synonyms_path": "synonyms_skill.txt"
+          "synonyms_path": "analyzers/F212720903"
         }
       },
       "analyzer": {
@@ -85,17 +98,27 @@ $curl --request PUT 'http://localhost:9200/staging_my_resume/_settings' \
 {"acknowledged": true}
 ```
 
+</details>
+
 # Open the index
 
+<details>
+  <summary>Code</summary>
+
 ```shell
-$ curl --request POST 'http://localhost:9200/staging_my_resume/_open'
+$ curl --request POST 'https://vpc-application-index-es-stage-hqo6aa6sarqhaxnhg6tgmp6bre.ap-southeast-1.es.amazonaws.com/staging_my_resume/_open'
 {"acknowledged":true,"shards_acknowledged":true}
 ```
 
+</details>
+
 # Update the index mapping
 
+<details>
+  <summary>Code</summary>
+
 ```shell
-$ curl --location --request PUT 'http://localhost:9200/staging_my_resume/_mapping' \
+$ curl --location --request PUT 'https://vpc-application-index-es-stage-hqo6aa6sarqhaxnhg6tgmp6bre.ap-southeast-1.es.amazonaws.com/staging_my_resume/_mapping' \
 --header 'Content-Type: application/json' \
 --data-raw '{
   "properties": {
@@ -587,10 +610,15 @@ $ curl --location --request PUT 'http://localhost:9200/staging_my_resume/_mappin
 {"acknowledged":true,"shards_acknowledged":true}
 ```
 
+</details>
+
 # Create a nested document
 
+<details>
+  <summary>Code</summary>
+
 ```shell
-$ curl --location --request PUT 'http://localhost:9200/staging_my_resume/_doc/51894735' \
+$ curl --location --request PUT 'https://vpc-application-index-es-stage-hqo6aa6sarqhaxnhg6tgmp6bre.ap-southeast-1.es.amazonaws.com/_doc/51894735' \
 --header 'Content-Type: application/json' \
 --data-raw '{
   "siva_resume_id": 51894735,
@@ -845,3 +873,5 @@ $ curl --location --request PUT 'http://localhost:9200/staging_my_resume/_doc/51
 }'
 {"_index":"staging_my_resume","_type":"_doc","_id":"51894735","_version":1,"result":"created","_shards":{"total":2,"successful":1,"failed":0},"_seq_no":0,"_primary_term":3}
 ```
+
+</details>
