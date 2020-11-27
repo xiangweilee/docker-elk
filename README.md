@@ -671,7 +671,7 @@ $ curl --location --request PUT 'https://vpc-application-index-es-stage-hqo6aa6s
     {
       "qualification": {
         "code": 4,
-        "name": "Bachelor''s Degree",
+        "name": "Bachelor'\''s Degree",
         "siva_code": 64
       },
       "field_of_study": {
@@ -703,7 +703,7 @@ $ curl --location --request PUT 'https://vpc-application-index-es-stage-hqo6aa6s
       "position_title": "UX & UI Designer",
       "joined_date": "2017-05-03T00:00:00Z",
       "left_date": "2017-08-03T00:00:00Z",
-      "work_description": "- Worked on the \"Business Grant Portal\" as a UX & UI Designer in a Scrum Agile Framework\r\n- Created extension and interactive prototypes for user testing\r\n- Conducted Usability Testingon prototypes to gather feedback\r\n- Resolved user pain points\/problems through observations during user testing\r\n- Designed UX and UI based on observation, research and user's feedback\r\n- Designed illustrations and icons with the users, product and branding in mind\r\n- Implemented some tasks\/stories in React while working as a Designer for the project",
+      "work_description": "- Worked on the \"Business Grant Portal\" as a UX & UI Designer in a Scrum Agile Framework\r\n- Created extension and interactive prototypes for user testing\r\n- Conducted Usability Testingon prototypes to gather feedback\r\n- Resolved user pain points\/problems through observations during user testing\r\n- Designed UX and UI based on observation, research and user'\''s feedback\r\n- Designed illustrations and icons with the users, product and branding in mind\r\n- Implemented some tasks\/stories in React while working as a Designer for the project",
       "company": {
         "name": "GovTech Singapore"
       },
@@ -725,7 +725,7 @@ $ curl --location --request PUT 'https://vpc-application-index-es-stage-hqo6aa6s
       "position_title": "UX & UI Design Intern",
       "joined_date": "2016-05-03T00:00:00Z",
       "left_date": "2016-08-03T00:00:00Z",
-      "work_description": "- Conceptualized and created storyboards for a Jergen's web\/social media video advertisement\r\n- Created wireframes for a client\u2019s website to observe and gather feedback on the UX & UI\r\n- Designed graphic collaterals, ad banners and icons for clients (Visa, IKEA, ThyssenKrupp)\r\n- Animated graphic illustrations on the web using JavaScript\r\n- Designed responsive websites on CMS like Tumblr\r\n- Designed UI components for websites",
+      "work_description": "- Conceptualized and created storyboards for a Jergen'\''s web\/social media video advertisement\r\n- Created wireframes for a client\u2019s website to observe and gather feedback on the UX & UI\r\n- Designed graphic collaterals, ad banners and icons for clients (Visa, IKEA, ThyssenKrupp)\r\n- Animated graphic illustrations on the web using JavaScript\r\n- Designed responsive websites on CMS like Tumblr\r\n- Designed UI components for websites",
       "company": {
         "name": "Papier Blanc"
       },
