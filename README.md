@@ -671,7 +671,7 @@ $ curl --location --request PUT 'https://vpc-application-index-es-stage-hqo6aa6s
     {
       "qualification": {
         "code": 4,
-        "name": "Bachelor's Degree",
+        "name": "Bachelor''s Degree",
         "siva_code": 64
       },
       "field_of_study": {
