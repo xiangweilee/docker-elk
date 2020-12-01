@@ -612,7 +612,7 @@ $ curl --location --request PUT 'https://vpc-application-index-es-stage-hqo6aa6s
 
 </details>
 
-# Create pipeline to create timestamp automatically
+# Create a pipeline to create timestamp automatically
 
 <details>
   <summary>Code</summary>
