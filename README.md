@@ -612,6 +612,29 @@ $ curl --location --request PUT 'https://vpc-application-index-es-stage-hqo6aa6s
 
 </details>
 
+# Create pipeline to create timestamp automatically
+
+<details>
+  <summary>Code</summary>
+
+```shell
+curl --location --request PUT 'https://vpc-application-index-es-stage-hqo6aa6sarqhaxnhg6tgmp6bre.ap-southeast-1.es.amazonaws.com/_ingest/pipeline/timestamp' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+  "description": "Creates a timestamp when a document is initially indexed",
+  "processors": [
+    {
+      "set": {
+        "field": "_source.timestamp",
+        "value": "{{_ingest.timestamp}}"
+      }
+    }
+  ]
+}'
+```
+
+</details>
+
 # Create a nested document
 
 <details>
